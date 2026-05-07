@@ -134,7 +134,10 @@ async function loadFetchModule(
         }
     }));
 
-    const fetchModule = await import('../source/utils/fetch');
+    const fetchModule =
+        require('../source/utils/fetch') as typeof import(
+            '../source/utils/fetch'
+        );
 
     return {
         fetchModule,

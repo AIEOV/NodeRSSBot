@@ -14,11 +14,14 @@ describe('no proxy is set', () => {
         }));
     });
     test('actually mocked', async () => {
-        const { config } = await import('../source/config');
+        const { config } =
+            require('../source/config') as typeof import('../source/config');
         expect(config).toEqual(allNullProxy);
     });
     test('should no have proxyUrl', async () => {
-        const { proxyUrl } = await import('../source/utils/agent');
+        const { proxyUrl } = require('../source/utils/agent') as typeof import(
+            '../source/utils/agent'
+        );
         expect(proxyUrl).toBeNull();
     });
     afterAll(() => {
@@ -40,11 +43,14 @@ describe('http proxy is set', () => {
         }));
     });
     test('actually mocked', async () => {
-        const { config } = await import('../source/config');
+        const { config } =
+            require('../source/config') as typeof import('../source/config');
         expect(config).toEqual(httpProxyConfig);
     });
     test('should have proxyUrl set', async () => {
-        const { proxyUrl } = await import('../source/utils/agent');
+        const { proxyUrl } = require('../source/utils/agent') as typeof import(
+            '../source/utils/agent'
+        );
         expect(proxyUrl).toBe('http://10.0.2.2:1080');
     });
     afterAll(() => {
@@ -66,12 +72,15 @@ describe('https proxy is set', () => {
         }));
     });
     test('actually mocked', async () => {
-        const { config } = await import('../source/config');
+        const { config } =
+            require('../source/config') as typeof import('../source/config');
         expect(config).toEqual(httpsProxyConfig);
     });
     test('agent should contain http and https', async () => {
         const { proxyUrl, default: agent } =
-            await import('../source/utils/agent');
+            require('../source/utils/agent') as typeof import(
+                '../source/utils/agent'
+            );
         expect(proxyUrl).toBe('https://10.0.2.2:1080');
         expect(agent.http).toHaveProperty(
             'proxyOptions.host',
@@ -104,12 +113,15 @@ describe('socks proxy is set', () => {
         }));
     });
     test('actually mocked', async () => {
-        const { config } = await import('../source/config');
+        const { config } =
+            require('../source/config') as typeof import('../source/config');
         expect(config).toEqual(httpsProxyConfig);
     });
     test('agent should contain http and https', async () => {
         const { proxyUrl, default: agent } =
-            await import('../source/utils/agent');
+            require('../source/utils/agent') as typeof import(
+                '../source/utils/agent'
+            );
         expect(proxyUrl).toBe('socks://10.0.2.2:1080');
         expect(agent.http).toHaveProperty(
             'proxy.host',

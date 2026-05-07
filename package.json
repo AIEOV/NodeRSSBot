@@ -83,11 +83,26 @@
     "prettier": "^3.8.3",
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.1"
   },
   "jest": {
+    "openHandlesTimeout": 0,
     "preset": "ts-jest/presets/js-with-ts",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ],
+    "setupFiles": [
+      "<rootDir>/test/jest.setup-env.cjs"
+    ],
+    "transform": {
+      "^.+\\.[tj]s$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.test.json"
+        }
+      ]
+    },
     "coveragePathIgnorePatterns": [
       "<rootDir>/test/test-data/*"
     ]
