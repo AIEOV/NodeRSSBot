@@ -40,8 +40,7 @@ describe('got', () => {
         expect(defaultsMock).toHaveBeenCalledWith({
             headers: {
                 'user-agent': 'NodeRSSBot Test UA',
-                accept:
-                    'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 '
+                accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 '
             },
             timeout: 12 * 1000,
             proxy: 'http://proxy.example:8080',
